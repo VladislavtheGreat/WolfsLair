@@ -115,7 +115,7 @@
     <script>
         const SUPABASE_URL = "https://ecapzdmvwzpshkbwfflw.supabase.co";
         const SUPABASE_KEY = "sb_publishable_Z-xiQBS7M-82JXbRixSxVw_TjDDkxli";
-        const supabase = window.supabase.createClient(
+        const db = window.supabase.createClient(
             
     SUPABASE_URL,
     SUPABASE_KEY
@@ -168,7 +168,7 @@ document.getElementById('menfess-form').addEventListener('submit', async functio
         timeStyle: 'short'
     });
 
-    const { error } = await supabase
+    const { error } = await db
         .from('menfess')
         .insert([
             {
@@ -198,7 +198,7 @@ document.getElementById('menfess-form').addEventListener('submit', async functio
 
     const container = document.getElementById('list-menfess');
 
-    const { data, error } = await supabase
+    const { data, error } = await db
         .from('menfess')
         .select('*')
         .order('id', { ascending: false });
